@@ -32,7 +32,6 @@ app.use(
   })
 );
 app.use(express.json()); // parsing any JSON objects from the request - request.body
-app.use(cookieParser());
 app.use(passport.initialize());
 
 passport.use(jwtStrategy);

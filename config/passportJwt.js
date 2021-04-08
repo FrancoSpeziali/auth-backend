@@ -1,8 +1,9 @@
 const { Strategy: JwtStrategy } = require("passport-jwt");
+ExtractJwt = require("passport-jwt").ExtractJwt;
 
 const jwtStrategy = new JwtStrategy(
   {
-    jwtFromRequest: (request) => request.cookies.jwt,
+    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: "8e7rt9eyfsd789fgys89yg",
   },
   (payload, done) => {
