@@ -66,7 +66,7 @@ router.post("/login", async (request, response) => {
     }
 
     const token = issueJwt(user._id);
-
+    881;
     response
       .cookie("jwt", token, {
         httpOnly: true, // controlled by backend - security
@@ -86,5 +86,15 @@ router.get(
     response.send({ user: request.user });
   }
 );
+
+router.get("/logout", (request, response) => {
+  response
+    .clearCookie("jwt", {
+      httpOnly: true, // controlled by backend - security
+      secure: false, // http not https
+      sameSite: "lax", // running on different domains between backend / frontend
+    })
+    .send("cookie cleared!");
+});
 
 module.exports = router;
